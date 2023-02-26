@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+  <title>BRETTIT Home</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <h2>
+    Welcome <%= user %>
+  </h2>
+
+  <div id="top-btn">
+    <form action="/posts/create" method="GET">
+      <% if (user) { %>
+        <button id="home-post-btn" class="btn" type="submit">
+          Add Post
+        </button>
+        <% } %>
+    </form>
+  </div>
+
+  <br>
+  </div>
+  <% posts.forEach(userpost => { %>
+    <div id="home-frame" class="new-post-form form-container">
+      <h3 class="post-title">
+        <a href="/posts/show/<%= userpost.id %>">
+          <%= userpost.title %>
+        </a>
+      </h3>
+      <a class="small-link">
+        <%= userpost.link %>
+      </a>
+      <p class="post-info">
+        Posted By: <%= userpost.username %>
+      </p>
+      <p class="post-info">
+        <%= userpost.description %>
+      </p>
+      <p class="post-info">
+        <%= userpost.subgroup %>
+      </p>
+      <p class="post-info">
+        <%= new Date(userpost.timestamp) %>
+      </p>
+
+    </div>
+    <% }) %>
+
+      <br>
+      <div id="home-btns">
+        <div>
+          <button id="home-cat" class="btn home-cat-btn">
+            <a class="home-cat-btn" href="subs/list">
+              Categories
+            </a>
+          </button>
+        </div>
+
+        <form action="/logout" method="POST">
+          <% if (user) { %>
+            <button id="home-log-btn" class="btn" type="submit">
+              Logout
+            </button>
+            <% } %>
+        </form>
+      </div>
+      <div>
+
+
+        <footer>
+          <%- include("../partials/footer"); %>
+        </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+  <title>Add Post</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <h2>Add a New Post</h2>
+
+  <div class="new-post-form form-container">
+    <form action="/posts/create" method="POST">
+      <div class="split-create-form">
+        <span class="login-labels"><label for="title">Title:</label></span>
+        <span><input type="text" name="title" placeholder="Add Title" required></span>
+      </div>
+
+      <br>
+      <div class="split-create-form">
+        <span><label class="login-labels" for="link">Link:</label></span>
+        <span><input type="text" name="link" placeholder="Add Link"></span>
+      </div>
+
+      <br>
+      <div class="split-create-form">
+        <span><label class="login-labels" for="description">Description:</label></span>
+        <span><input type="text" name="description" placeholder="Add Description" required></span>
+      </div>
+
+      <br>
+      <!-- add if statement -->
+      <div class="split-create-form">
+        <span><label class="login-labels" for="category">Category:</label></span>
+        <span><input type="text" name="category" placeholder="Add Category" required></span>
+      </div>
+      <!-- Connect to category or sub group -->
+      <!-- Why don't they stay longer than a session -->
+
+      <br>
+      <button class="btn" type="submit">Post</button>
+    </form>
+  </div>
+
+  <footer>
+    <%- include("../partials/footer"); %>
+  </footer>
+
+</body>
+
+</html>

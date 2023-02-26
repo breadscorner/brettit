@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+  <title>Subs List</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <h2>
+    Categories
+  </h2>
+
+  <div class="new-post-form form-container">
+    <ul class="listofsubs">
+      <% sub.forEach(element=> { %>
+        <li>
+          <a id="listofsubs" href="/subs/subs-show/<%= element %>">
+            <%= element %>
+          </a>
+        </li>
+        <% }) %>
+    </ul>
+  </div>
+
+  <footer>
+    <%- include("../partials/footer"); %>
+  </footer>
+
+</body>
+
+</html>

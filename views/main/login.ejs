@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brettit Home Page</title>
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <div class="grid">
+    <h2 class="loginpoetry" id="l1">Come on in and take a seat,<br>Please log in, so we can meet.</h2>
+    <h2 class="loginpoetry" id="l2">First, we need to see it's you,<br>Then enjoy the BRETTIT view!</h2>
+  </div>
+
+  <div class="loginformcontainer form-container">
+
+    <form action="/login" method="POST">
+      <div class="login-form">
+        <label class="login-labels" for="username">Username</label>
+        <input type="text" placeholder="Enter Username" id="username" name="username" required>
+
+        <br>
+        <label class="login-labels" for="password">Password</label>
+        <input type="password" placeholder="Enter Password" id="password" name="password" required>
+
+        <br>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+
+        <br>
+        <div id="loginb">
+          <button type="submit" class="btn">Login</button>
+          <button type="button" class="btn">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <br>
+  <div id="log-btn">
+    <button class="btn">Forgot <a href="https://www.youtube.com/watch?v=3Fiadn5GP90" target="_blank">Pass?</a></button>
+    <button class="btn">Sign Up <a href="/sign-up">Here</a></button>
+  </div>
+
+  <footer>
+    <%- include("../partials/footer"); %>
+  </footer>
+
+</body>
+
+</html>

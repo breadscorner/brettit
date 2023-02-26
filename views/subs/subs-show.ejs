@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+  <title>Subgroups</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <h2>
+    <%= subname %> Posts
+  </h2>
+
+  <div id="sub-show-post" class="new-post-form form-container">
+    <% posts.forEach(element=> { %>
+      <% if (element.subgroup==subname) { %>
+
+        <div class="fullpost">
+          <h3 class="post-title">
+            <a href="/posts/show/<%= element.id %>">
+              <%= element.title %>
+            </a>
+          </h3>
+          <p class="small-link">
+            <a href="<%= element.link %>" target="_blank">
+              <%= element.link %>
+            </a>
+          </p>
+          <p class="post-info">
+            <%= element.description %>
+          </p>
+          <p class="post-info">
+            <%= new Date(element.timestamp) %>
+          </p>
+          <p class="post-info">
+            <%= element.username %>
+          </p>
+        </div>
+
+        <% } %>
+          <% }) %>
+  </div>
+
+  <footer>
+    <%- include("../partials/footer"); %>
+  </footer>
+
+</body>
+
+</html>

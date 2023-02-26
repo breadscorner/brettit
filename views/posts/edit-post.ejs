@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+  <title>Edit Post</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <h2>Edit Post</h2>
+
+  <div class="new-post-form">
+
+    <form method="POST" action="/posts/edit/<%= post.id %>">
+      <div class="split-create-form">
+        <span class="login-labels"><label for="title">Title:</label></span>
+        <span><input type="text" name="title" value="<%= post.title %>" required></span>
+      </div>
+
+      <br>
+      <div class="split-create-form">
+        <span><label class="login-labels" for="link">Link:</label></span>
+        <span><input type="text" name="link" value="<%= post.link %>"></span>
+      </div>
+
+      <br>
+      <div class="split-create-form">
+        <span><label class="login-labels" for="description">Description:</label></span>
+        <span><input type="text" name="description" value="<%= post.description %>" cols="30" rows="10" required></span>
+      </div>
+
+      <br>
+      <div class="split-create-form">
+        <span><label class="login-labels" for="category">Category:</label></span>
+        <span><input type="text" name="category" value="<%= post.subgroup %>" required></span>
+      </div>
+      <!-- Connect to category or sub group -->
+
+      <br>
+      <button class="btn" type="submit">Post</button>
+      <button class="btn" onclick="history.back()">Cancel</button>
+    </form>
+  </div>
+
+  <footer>
+    <%- include("../partials/footer"); %>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+  <title>Sign Up</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <h2>
+    Sign Up
+  </h2>
+
+  <form action="/sign-up" method="POST">
+    <div class="new-post-form">
+      <div class="split-create-form">
+        <span><label class="login-labels" for="password">Choose A Username</label></span>
+        <span><input type="text" name="password" required></span>
+      </div>
+
+      <br>
+      <div class="split-create-form">
+        <span><label class="login-labels" for="username">Choose A Password</label></span>
+        <span><input type="text" name="username" id="description" required></span>
+      </div>
+    </div>
+
+    <br>
+    <div id="sign-up-btn">
+      <button type="submit" class="btn">Sign Up</button>
+      <button type="button" class="btn">Cancel</button>
+    </div>
+
+  </form>
+
+  <footer>
+    <%- include("../partials/footer"); %>
+  </footer>
+
+</body>
+
+</html>

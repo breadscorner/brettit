@@ -1,0 +1,124 @@
+/* header */
+/* Keyframe alternating header */
+.container {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.container .text.text-one,
+.container .text.text-two {
+  text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC;
+}
+
+.container .text {
+  position: relative;
+  color: #6096ba;
+  font-size: 3.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.container .text.text-one {
+  color: midnightblue;
+  font-weight: lighter;
+}
+
+.container .text.text-two {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Moving box in header */
+.text-two:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #6096ba;
+  border-left: 2px solid midnightblue;
+  animation: animate 4s steps(16) infinite;
+}
+
+@keyframes animate {
+
+  40%,
+  60% {
+    left: calc(100% + 10px);
+  }
+
+  100% {
+    left: 0%;
+  }
+}
+
+/* Sub header- course name */
+#course-name-header {
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* Header navigation */
+.navbar-header {
+  background-color: #8b8c89;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  height: 60px;
+  width: 99%;
+  border: 2px solid white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.nav-link {
+  display: block;
+  color: #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #555;
+}
+
+/* Right side of nav bar */
+.nav-split {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logout-btn-nav {
+  margin-right: 15px;
+}
+
+#header-logout {
+  position: relative;
+  float: right;
+}
+
+/* Footer */
+.footer-text {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  color: midnightblue;
+}

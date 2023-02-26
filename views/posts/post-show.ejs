@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
+  <title>Postings</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("../partials/header"); %>
+  </header>
+
+  <br>
+  <div id="ind-post" class="new-post-form form-container">
+    <h2>
+      <%= post.creator.uname %>'s Post
+    </h2>
+
+    <h3 class="post-title">
+      <a href="<%= post.link %>" target="_blank">
+        <%= post.title %>
+      </a>
+    </h3>
+    <p class="small-link">
+      <%= post.link %>
+    </p>
+    <p class="post-info">
+      <%= post.description %>
+    </p>
+    <p class="post-info">
+      <%= new Date(post.timestamp) %>
+    </p>
+    <p class="post-info">
+      <%= post.creator.uname %>
+    </p>
+
+    <% if (vote) { %>
+      <p>
+        <%= vote.value %>
+      </p>
+      <% } %>
+
+        <br>
+        <div id="vote-btn">
+          <!-- Up Vote -->
+          <span>
+            <form action="/posts/vote/<%= post.id %>" method="POST">
+              <input type="text" name="vote" value="1" id="up" hidden>
+              <button id="upvote" type="submit" class="btn">
+                Yes Bueno
+              </button>
+            </form>
+          </span>
+
+          <!-- Down Vote -->
+          <span>
+            <form action="/posts/vote/<%= post.id %>" method="POST">
+              <input type="text" name="vote" value="-1" id="down" hidden>
+              <button id="downvote" type="submit" class="btn">
+                No Bueno
+              </button>
+            </form>
+          </span>
+        </div>
+        <br>
+
+        <% post.comments.forEach((comment)=> { %>
+          <% if (comment) { %>
+            <div class="post-info">
+              <p>
+                <%= comment.description %>
+              </p>
+              <form action="/comments/delete/<%=comment.id%>" method="post">
+                <input hidden type="text" name="postid" id="" value="<%= post.id%>">
+                <button class="btn btn-sml">Delete</button>
+              </form>
+            </div>
+            <% } %>
+              <% }) %>
+                <div id="add-comment">
+                  <form action="/posts/comment-create/<%= post.id %>" method="POST">
+                    <div class="split-create-form">
+                      <span><label class="login-labels" for="add-comment">Add Comment:</label></span>
+                      <span><input type="text" name="description" required></span>
+                    </div>
+                </div>
+
+                <br>
+                <div id="comment-btn">
+                  <button type="submit" class="btn btn-sml">
+                    Comment
+                  </button>
+                </div>
+                </form>
+
+                <br>
+                <div id="edit-btn">
+                  <% if (canModify) { %>
+                    <button type="submit" class="btn">
+                      <a class="btn-link" href="/posts/edit/<%= post.id %>">Edit Post</a>
+                    </button>
+                    <button type="submit" class="btn">
+                      <a class="btn-link" href="/posts/deleteconfirm/<%= post.id %>">Delete Post</a>
+                    </button>
+                    <% } %>
+                </div>
+
+  </div>
+
+  <footer>
+    <%- include("../partials/footer"); %>
+  </footer>
+
+</body>
+
+</html>

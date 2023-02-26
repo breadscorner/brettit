@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Bar</title>
+</head>
+
+<body>
+  <header>
+    <div id="header-background" class="container">
+      <span class="text text-one"> Welcome To </span>
+      <span class="text text-two"></span>
+
+      <p id="course-name-header">
+        COMP 2131- Web Development 2 Assignment 
+        <!-- Need to add logged in as message(Global variable for user) -->
+      </p>
+
+      <nav class="navbar-header">
+        <ul class="navbar-ul">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/subs/list">Categories</a>
+          </li>
+        </ul>
+        <button id="go-back" class="btn" onclick="history.back()">Go Back</button>
+        <div id="logout-btn-nav">
+          <form action="/logout" method="post">
+            <button id="header-logout" class="btn">Logout</button>
+          </form>
+        </div>
+
+      </nav>
+
+      <script>
+        let text = document.querySelector(".text.text-two");
+
+        const textChange = () => {
+          setTimeout(() => {
+            text.textContent = "BRETTIT";
+          }, 0);
+          setTimeout(() => {
+            text.textContent = "JEDDIT";
+          }, 4000);
+          setTimeout(() => {
+            text.textContent = "REDDIT";
+          }, 8000);
+        }
+        textChange();
+        setInterval(textChange, 12000);
+      </script>
+    </div>
+
+  </header>
+
+</body>
+
+</html>
