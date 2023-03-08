@@ -41,11 +41,11 @@
       <%= post.creator.uname %>
     </p>
 
-    <% if (vote) { %>
+    
       <p>
-        <%= vote.value %>
+        <%= post.voteCount %>
       </p>
-      <% } %>
+    
 
         <br>
         <div id="vote-btn">
@@ -75,11 +75,18 @@
           <% if (comment) { %>
             <div class="post-info">
               <p>
+                <%= comment.creator.uname %>
+              </p>
+              <p>
                 <%= comment.description %>
               </p>
               <form action="/comments/delete/<%=comment.id%>" method="post">
                 <input hidden type="text" name="postid" id="" value="<%= post.id%>">
                 <button class="btn btn-sml">Delete</button>
+              </form>
+              <form action="/comments/edit/<%=comment.id%>">
+                <input hidden type="text" name="postid" id="" value="<%= post.id%>">
+                <button class="btn btn-sml">Edit</button>
               </form>
             </div>
             <% } %>

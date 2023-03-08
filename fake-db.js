@@ -81,11 +81,18 @@ function getVotesForPost(post_id) {
   return votes.filter(vote => vote.post_id === post_id);
 }
 
+function sumVotes(votes) {
+  let total = 0;
+  votes.forEach((vote) => total += vote.value)
+  return total;
+}
+
 function decoratePost(post) {
   post = {
     ...post,
     creator: users[post.creator],
     votes: getVotesForPost(post.id),
+    voteCount: sumVotes(getVotesForPost(post.id)),
     comments: Object.values(comments).filter(comment => comment.post_id === post.id).map(comment => ({ ...comment, creator: users[comment.creator] })),
   }
   return post;
@@ -95,12 +102,31 @@ function decoratePost(post) {
  * @param {*} n how many posts to get, defaults to 5
  * @param {*} sub which sub to fetch, defaults to all subs
  */
-function getPosts(n = 20, sub = undefined) {
+
+function getPosts(n = 20, sub = undefined, order="oldest") {
   let allPosts = Object.values(posts);
   if (sub) {
     allPosts = allPosts.filter(post => post.subgroup === sub);
   }
-  allPosts.sort((a, b) => b.timestamp - a.timestamp);
+  if (order == "newest") {
+    allPosts.sort((a, b) => b.timestamp - a.timestamp);
+  } else if (order == "oldest") {
+    allPosts.sort((a, b) => a.timestamp - b.timestamp);
+  } else if (order == "largest") {
+    allPosts.sort((a, b) => {
+      a = decoratePost(a);
+      b = decoratePost(b);
+      return b.voteCount - a.voteCount
+    });
+  } else if (order == "smallest") {
+    allPosts.sort((a, b) => {
+      a = decoratePost(a);
+      b = decoratePost(b);
+      console.log("SOMETHING");
+      console.log(a);
+      return a.voteCount - b.voteCount;
+    });
+  }
   return allPosts.slice(0, n);
 }
 
@@ -164,6 +190,14 @@ function deleteComment(comment_id) {
   delete comments[comment_id];
 }
 
+function editComment(comment_id, description) {
+  comments[comment_id].description = description;
+}
+
+function getCommentById(comment_id) {
+  return comments[comment_id];
+}
+
 function getVote(userId, postId) {
   let foundVote;
 
@@ -208,5 +242,7 @@ module.exports = {
   deleteComment,
   getVote,
   createVote,
+  getCommentById,
+  editComment
 };
 

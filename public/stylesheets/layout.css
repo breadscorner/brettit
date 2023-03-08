@@ -95,6 +95,19 @@ h3 {
   background-color: #555;
 }
 
+#center-order {
+  display: block;
+  text-align: center;
+}
+
+#order {
+  text-align: center;
+  font-size: 1rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  color: midnightblue;
+}
+
 #edit-btn,
 #comment-btn,
 #sign-up-btn,

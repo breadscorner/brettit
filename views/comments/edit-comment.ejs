@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/partials.css">
   <title>Edit Comment</title>
 </head>
 
@@ -14,7 +16,15 @@
     <%- include("../partials/header"); %>
   </header>
 
-  <!-- Do later -->
+  <h2>Comments</h2>
+
+  <div class="loginformcontainer new-post-form">
+    <h3>Edit</h3>
+    <form action="/comments/edit/<%= id %>" method="post">
+      <input type="text" name="description" value="<%= comment.description %>">
+      <button>Update</button>
+    </form>
+  </div>
 
   <footer>
     <%- include("../partials/footer"); %>

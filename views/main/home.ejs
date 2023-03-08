@@ -32,7 +32,19 @@
 
   <br>
   </div>
-  <% posts.forEach(userpost => { %>
+
+  <!-- <pre><%= debug(posts) %></pre> -->
+<div>
+  <p id="order">Order Posts By:</p>
+  <div id="center-order">
+    <span class="btn-sml"><a class="btn" href="/?order=oldest">Sort From Oldest First</a></span>
+    <span class="btn-sml"><a class="btn" href="/?order=newest">Sort From Newest First</a></span>
+    <span class="btn-sml"><a class="btn" href="/?order=largest">Sort From Largest To Smallest Vote</a></span>
+    <span class="btn-sml"><a class="btn" href="/?order=smallest">Sort From Smallest To Largest Vote</a></span>
+  </div>
+</div>
+<br>
+  <% posts.forEach(userpost=> { %>
     <div id="home-frame" class="new-post-form form-container">
       <h3 class="post-title">
         <a href="/posts/show/<%= userpost.id %>">

@@ -3,7 +3,7 @@ let postRouter = express.Router();
 const db = require('../fake-db');
 
 
-// global variables
+// Global variables
 let users = db.users;
 
 postRouter
@@ -30,7 +30,6 @@ postRouter
     const canModify = loggedInUsername === postCreator;
     const date = new Date(post.timestamp);
     const message = req.query.message;
-    const vote = db.getVote(post.creator.id, postid);
     res.render("posts/post-show", {
       postid: postid,
       post: post,
@@ -38,9 +37,10 @@ postRouter
       users: users,
       canModify,
       message: message,
-      vote: vote,
+      // vote: vote,
     });
   })
+
 
 postRouter
   .route("/create")

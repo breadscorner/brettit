@@ -33,6 +33,20 @@ commentRouter
 
   })
 
+  commentRouter
+  .get("/edit/:commentid", (req, res) => {
+    const commentId = req.params.commentid;
+    const comment = db.getCommentById(commentId)
+    res.render("comments/edit-comment", { id: commentId, comment})
+  })
+  .post("/edit/:commentid", (req, res) => {
+    const commentid = req.params.commentid;
+    const description = req.body.description; // bye
+    const postId = db.getCommentById(commentid).post_id;
+    db.editComment(commentid, description);
+    res.redirect(`/posts/show/${postId}`);
+  })
+
 commentRouter
   .post("/delete/:commentid", (req, res) => {
     const commentid = req.params.commentid;
